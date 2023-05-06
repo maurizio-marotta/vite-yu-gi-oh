@@ -1,13 +1,19 @@
-
 <script>
 export default {
-  
+  name: 'Header'
 }
 </script>
+
 <template>
-  <div class="class">ciao</div>
+  <div class="header">
+    <h2>Yu-Gi-Oh Api</h2>
+  </div>
+
 </template>
 
-<style>
+<style lang="scss" scoped>
 
+.header{
+  height: 35px;
+}
 </style>

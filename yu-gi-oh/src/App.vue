@@ -11,12 +11,14 @@ export default {
 </script>
 
 <template>
-  <div class="">
+  <div class="container">
     <headerVue/>
     <mainVue/>
   </div>
 </template>
 
-<style>
-  
+<style lang="scss" scoped>
+  .container{
+    padding: 0px 150px;
+  }
 </style>
