@@ -1,9 +1,15 @@
 <script>
 import card from '../components/card.vue';
 import cardVue from '../components/card.vue';
+import { store } from '../data/store';
 export default {
   components: { card },
-    name:'Main'
+    name:'Main',
+    data(){
+      return {
+        store,
+      }
+    }
 }
 </script>
 
@@ -18,7 +24,7 @@ export default {
         </div>
         <div class="container-2 p-5">
           <div class="counter">
-            <span>card trovate</span>
+            <span>card trovate : {{ store.filter }}</span>
           </div>
           <div class="cards-container d-flex">
             <card/>
