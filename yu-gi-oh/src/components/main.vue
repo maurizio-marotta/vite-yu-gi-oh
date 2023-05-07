@@ -1,5 +1,8 @@
 <script>
+import card from '../components/card.vue';
+import cardVue from '../components/card.vue';
 export default {
+  components: { card },
     name:'Main'
 }
 </script>
@@ -13,8 +16,30 @@ export default {
             <option value="3">Opzione</option>
         </select>
         </div>
-        <div class="container-2 px-2">
-
+        <div class="container-2 p-5">
+          <div class="counter">
+            <span>card trovate</span>
+          </div>
+          <div class="cards-container d-flex">
+            <card/>
+            <card/>
+            <card/>
+            <card/>
+            <card/>
+            <card/>
+            <card/>
+            <card/>
+            <card/>
+            <card/>
+            <card/>
+            <card/>
+            <card/>
+            <card/>
+            <card/>
+            <card/>
+            <card/>
+            <card/>
+          </div>
         </div>
     </div>
 </template>
@@ -24,13 +49,11 @@ export default {
   border-radius: 7px;
   padding: 10px 30px;
 }
-.select{
-  text-align: left;
-  }
+
 
 .container{
   margin-top: 25px;
-  height: 100vh;
+  min-height: 100vh;
   background-color: #D48F38;
 }
 
@@ -40,4 +63,19 @@ export default {
   margin: 20px;
 }
 
+.counter{
+  display: flex;
+  align-items: center;
+  height: 5vh;
+  background-color: black;
+}
+span{
+  margin-left: 20px;
+  color: white;
+}
+
+.cards-container{
+  gap: 20px;
+  flex-wrap: wrap;
+}
 </style>
