@@ -16,4 +16,8 @@ export default {
 .header{
   height: 35px;
 }
+
+h2{
+  margin: 30px 0px;
+}
 </style>

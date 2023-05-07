@@ -18,7 +18,5 @@ export default {
 </template>
 
 <style lang="scss" scoped>
-  .container{
-    padding: 0px 150px;
-  }
+
 </style>
