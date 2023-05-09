@@ -2,6 +2,8 @@
 import card from '../components/card.vue';
 import cardVue from '../components/card.vue';
 import { store } from '../data/store';
+import axios from '../../node_modules/axios'
+
 export default {
   components: { card },
     name:'Main',
@@ -9,7 +11,18 @@ export default {
       return {
         store,
       }
+    },
+  methods :{
+    getApi(){
+      axios.get(store.apiUrl)
+      .then(result => {
+        console.log(result.data);
+      })
     }
+  },
+  mounted(){
+    this.getApi()
+  }
 }
 </script>
 
@@ -26,26 +39,15 @@ export default {
           <div class="counter">
             <span>card trovate : {{ store.filter }}</span>
           </div>
-          <div class="cards-container d-flex">
-            <card/>
-            <card/>
-            <card/>
-            <card/>
-            <card/>
-            <card/>
-            <card/>
-            <card/>
-            <card/>
-            <card/>
-            <card/>
-            <card/>
-            <card/>
-            <card/>
-            <card/>
-            <card/>
-            <card/>
-            <card/>
-          </div>
+          <div class="row row-cols-5">
+            <Card
+              v-for="card in store.cardArray"
+              :key="card.id"
+              :img="card.card_images"
+              :name="card.name"
+              :type="card.type" />
+            
+        </div>
         </div>
     </div>
 </template>
