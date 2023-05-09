@@ -8,4 +8,4 @@ export const store = reactive({
   typeMonsterArr: [],
   isLoad: true,
   optionType: null
-})
+});

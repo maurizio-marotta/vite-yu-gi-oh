@@ -4,19 +4,19 @@ export default {
     props:{
     image_url: String,
     name:String,
-    attribute:String,
+    attribute:String
   }
 }
+
 </script>
 
 <template>
 
-
-<div class="card">
-        <img :src="image_url">
-        <span>{{ name }} ciao</span>
-        <span>{{ attribute }}</span>
-      </div>
+  <div class="card">
+    <img :src="image_url">
+    <span>{{ name }} </span>
+    <span>{{ card.archetype }}</span>
+  </div>
 
 </template>
 

@@ -1,23 +1,25 @@
 <script>
-import card from '../components/card.vue';
-import cardVue from '../components/card.vue';
 import { store } from '../data/store';
+import card from '../components/card.vue';
 import axios from '../../node_modules/axios'
 
 export default {
-  components: { card },
+  components: {
+      card 
+    },
     name:'Main',
     data(){
       return {
-        store,
+        store
       }
     },
   methods :{
     getApi(){
       axios.get(store.apiUrl)
       .then(result => {
-        const cardArray = result.data.slice(0, 100)
+        const cardArray = result.data.data.slice(0, 100);
         store.cardArray = cardArray;
+        console.log(cardArray);
         store.cardNumber = cardArray.length
       })
     }
@@ -45,11 +47,10 @@ export default {
             <Card
               v-for="card in store.cardArray"
               :key="card.id"
-              :img="card.card_images"
+              :img="card.card_images[0].image_url"
               :name="card.name"
-              :type="card.type" />
-            
-        </div>
+              :type="card.archetype" />
+          </div>
         </div>
     </div>
 </template>
