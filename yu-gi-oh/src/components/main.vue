@@ -16,7 +16,9 @@ export default {
     getApi(){
       axios.get(store.apiUrl)
       .then(result => {
-        console.log(result.data);
+        const cardArray = result.data.slice(0, 100)
+        store.cardArray = cardArray;
+        store.cardNumber = cardArray.length
       })
     }
   },
@@ -37,7 +39,7 @@ export default {
         </div>
         <div class="container-2 p-5">
           <div class="counter">
-            <span>card trovate : {{ store.filter }}</span>
+            <span>card trovate : {{ store.cardNumber}}</span>
           </div>
           <div class="row row-cols-5">
             <Card
