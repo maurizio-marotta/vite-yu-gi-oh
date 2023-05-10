@@ -2,9 +2,10 @@
 export default {
     name:'Card',
     props:{
-    image_url: String,
+    img: String,
     name:String,
-    attribute:String
+    type:String,
+    id: String
   }
 }
 
@@ -13,9 +14,9 @@ export default {
 <template>
 
   <div class="card">
-    <img :src="image_url">
-    <span>{{ name }} </span>
-    <span>{{ card.archetype }}</span>
+    <img :src="img" alt="name">
+    <span>{{ name }} </span><br>
+    <span>{{ type }}</span>
   </div>
 
 </template>
@@ -27,6 +28,9 @@ export default {
     flex-shrink: 0;
     padding: 20px;
     width: 16.3%;
-    height: 200px;
   }
+
+span{
+  font-size: 10px;
+}
 </style>

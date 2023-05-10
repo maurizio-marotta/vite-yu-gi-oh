@@ -1,11 +1,12 @@
 <script>
 import { store } from '../data/store';
-import card from '../components/card.vue';
-import axios from '../../node_modules/axios'
+import axios from '../../node_modules/axios';
+import cards from '../components/cards.vue';
 
+var test ;
 export default {
   components: {
-      card 
+      cards
     },
     name:'Main',
     data(){
@@ -17,10 +18,10 @@ export default {
     getApi(){
       axios.get(store.apiUrl)
       .then(result => {
-        const cardArray = result.data.data.slice(0, 100);
-        store.cardArray = cardArray;
-        console.log(cardArray);
-        store.cardNumber = cardArray.length
+        store.cardArray = result.data.data.slice(0, 10);
+        //store.cardArray = cardArray;
+        console.log(store.cardArray);
+        store.cardNumber = store.cardArray.length
       })
     }
   },
@@ -43,8 +44,9 @@ export default {
           <div class="counter">
             <span>card trovate : {{ store.cardNumber}}</span>
           </div>
-          <div class="row row-cols-5">
-            <Card
+          <div class="row row-cols-5" v-if="store.cardArray.length">
+            <!-- {{store.cardArray[0].card_images[0] }} -->
+            <cards
               v-for="card in store.cardArray"
               :key="card.id"
               :img="card.card_images[0].image_url"
