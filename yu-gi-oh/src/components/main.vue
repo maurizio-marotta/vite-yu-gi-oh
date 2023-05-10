@@ -11,7 +11,8 @@ export default {
     name:'Main',
     data(){
       return {
-        store
+        store,
+        filter:''
       }
     },
   methods :{
@@ -21,12 +22,18 @@ export default {
         store.cardArray = result.data.data.slice(0, 10);
         //store.cardArray = cardArray;
         console.log(store.cardArray);
-        store.cardNumber = store.cardArray.length
       })
     }
   },
   mounted(){
     this.getApi()
+  },
+  computed: {
+    filterCard(){
+      return this.store.cardArray.filter((card) => {
+        return card.archetype === this.filter;
+      })
+    }
   }
 }
 </script>
@@ -34,20 +41,20 @@ export default {
 <template>
     <div class="container">
         <div class="select pt-4">
-            <select class="mc-select">
-            <option value="1">Opzione</option>
-            <option value="2">Opzione</option>
-            <option value="3">Opzione</option>
+            <select name="filter" id="cardFilter" v-model="filter" class="mc-select">
+            <option label="Alien" value="Alien">Alien</option>
+            <option label="Noble Knight" value="Noble Knight">Noble Knight</option>
+            <option label="Melodious" value="Melodious">Melodious</option>
         </select>
         </div>
         <div class="container-2 p-5">
           <div class="counter">
-            <span>card trovate : {{ store.cardNumber}}</span>
+            <span>card trovate : {{ filterCard.length }}</span>
           </div>
           <div class="row row-cols-5" v-if="store.cardArray.length">
             <!-- {{store.cardArray[0].card_images[0] }} -->
             <cards
-              v-for="card in store.cardArray"
+              v-for="card in filterCard"
               :key="card.id"
               :img="card.card_images[0].image_url"
               :name="card.name"

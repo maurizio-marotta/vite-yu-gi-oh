@@ -8,5 +8,5 @@ export const store = reactive({
   cardOffset: 0,
   typeMonsterArr: [],
   isLoad: true,
-  optionType: null
+  optionType: null,
 });
